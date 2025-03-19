@@ -33,6 +33,9 @@ jobs:
     - name: Setup Gradle
       uses: gradle/actions/setup-gradle@af1da67850ed9a4cedd57bfd976089dd991e2582 # v4.0.0
 
+    - name: Grant execute permission to Gradle wrapper
+      run: chmod +x gradlew  # <-- Add this step
+
     - name: Build with Gradle Wrapper
       run: ./gradlew build
 
@@ -61,8 +64,7 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
     
-    - name: Grant execute permission to Gradle wrapper
-      run: chmod +x gradlew  # <-- Add this step
+
     
     # Generates and submits a dependency graph, enabling Dependabot Alerts for all project dependencies.
     # See: https://github.com/gradle/actions/blob/main/dependency-submission/README.md
